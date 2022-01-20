@@ -6,7 +6,7 @@
     "build": "vue-tsc --noEmit --skipLibCheck && vite build",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,ts,tsx,vue}\" --fix",
-    "prepare": "husky install && node_modules/.bin/husky add",
+    "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
