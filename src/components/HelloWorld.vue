@@ -20,7 +20,7 @@ test()
 
   <p>
     Recommended IDE setup: Recommended IDE setup: Recommended IDE setup:
-    Recommended IDE setup:
+    Recommended IDE setup: Recommended IDE setup:1111
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
     +
     <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
