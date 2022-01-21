@@ -6,7 +6,7 @@ const { resolve } = require('path')
 export default defineConfig({
   base: '/wave/',
   build: {
-    outDir: '/dist/wave'
+    outDir: 'dist/wave'
   },
   plugins: [vue()],
   resolve: {
