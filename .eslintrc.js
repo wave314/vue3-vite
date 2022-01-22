@@ -31,6 +31,20 @@ module.exports = {
         optionalDependencies: false,
         peerDependencies: false
       }
-    ]
+    ],
+    'linebreak-style': ['off', 'unix'],
+    'class-methods-use-this': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
+      }
+    ],
+    'global-require': 0,
+    'no-debugger': 'off'
   }
 }

@@ -1,17 +1,26 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import browser from '../store/persistent/browser'
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
+const selectedDate = ref(new Date())
 function test(): number {
   return 1
+}
+const i18n = useI18n()
+i18n.locale.value = 'zh'
+function changeLanguage() {
+  i18n.locale.value = i18n.locale.value === 'zh' ? 'en' : 'zh'
+  browser.language = i18n.locale.value
 }
 test()
 </script>
 
 <template>
-  <button id="prettier-id" className="prettier-class" @click="() => {}">
+  <button id="prettier-id" className="prettier-class" @click="changeLanguage">
     Click Here
   </button>
   <h1>
@@ -31,14 +40,15 @@ test()
   <p>
     <a href="https://vitejs.dev/guide/features.html" target="_blank">
       Vite Docs
+      {{ $t('system.title', { name: 'wave' }) }}
     </a>
     |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
+  <el-button type="primary" @click="count++">count is: {{ count }}</el-button>
+  <el-date-picker v-model="selectedDate" type="date"> </el-date-picker>
   <p>
-    Edit
+    {{ selectedDate }}
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
 </template>

@@ -1,12 +1,32 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+import en from 'element-plus/lib/locale/lang/en'
+import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import HelloWorld from './components/HelloWorld.vue'
+
+const i18n = useI18n()
+const currentLocale = ref(zhCn)
+const enLocale = ref(en)
+watch(useI18n().locale, () => {
+  const temp = enLocale.value
+  enLocale.value = currentLocale.value
+  currentLocale.value = temp
+})
+
+const toggle = () => {
+  i18n.locale.value = i18n.locale.value === 'en' ? 'zh' : 'en'
+}
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 Test + TypeScript + Vite" />
+  <el-config-provider :locale="currentLocale">
+    <el-button style="margin-left: 8px; vertical-align: middle" @click="toggle">
+      Switch Lang
+    </el-button>
+    <el-color-picker :model-value="''" style="vertical-align: middle" />
+    <HelloWorld msg="Hello Vue 3 Test + TypeScript + Vite" />
+  </el-config-provider>
 </template>
 
 <style>
