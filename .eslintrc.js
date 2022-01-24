@@ -19,6 +19,9 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
+      },
+      alias: {
+        map: [['@', '/src']]
       }
     }
   },
@@ -45,6 +48,8 @@ module.exports = {
       }
     ],
     'global-require': 0,
-    'no-debugger': 'off'
+    'no-debugger': 'off',
+    endOfLine: 'off',
+    'vue/multi-word-component-names': 0
   }
 }

@@ -9,6 +9,14 @@ class BrowserStore {
   public set language(v: string) {
     localStorage.setItem('language', v)
   }
+
+  public get userName(): string {
+    return localStorage.getItem('userName') || 'admin'
+  }
+
+  public set userName(v: string) {
+    localStorage.setItem('userName', v)
+  }
 }
 
 export default new BrowserStore()
