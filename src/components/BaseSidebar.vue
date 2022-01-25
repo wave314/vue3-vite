@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
+import BaseSidebarItem, { MenuItem } from './BaseSidebarItem.vue'
 
 const route = useRoute()
 
-const menuItems = [
+const menuItems: MenuItem[] = [
   {
     icon: 'iconfont icon-config',
     index: 'config',
@@ -13,11 +14,33 @@ const menuItems = [
       {
         icon: 'iconfont icon-config',
         index: '/config/common',
-        title: 'system.menus.config.common'
+        title: 'system.menus.config.common',
+        subs: []
+      }
+    ]
+  },
+  {
+    icon: 'iconfont icon-config',
+    index: 'report',
+    title: 'system.menus.report.title',
+    subs: [
+      {
+        icon: 'iconfont icon-config',
+        index: '/report/reservation',
+        title: 'system.menus.report.reservation.title',
+        subs: [
+          {
+            icon: 'iconfont icon-config',
+            index: '/report/reservation/day',
+            title: 'system.menus.report.reservation.dayReport',
+            subs: []
+          }
+        ]
       }
     ]
   }
 ]
+
 const store = useStore()
 </script>
 <template>
@@ -32,30 +55,14 @@ const store = useStore()
       :unique-opened="true"
       router
     >
-      <template v-for="menuItem in menuItems">
-        <template v-if="menuItem.subs">
-          <el-sub-menu :key="menuItem.index" :index="menuItem.index">
-            <template #title>
-              <i :class="menuItem.icon" />
-              <span>{{ $t(menuItem.title) }}</span>
-            </template>
-            <el-menu-item
-              v-for="item in menuItem.subs"
-              :key="item.title"
-              :index="item.index"
-            >
-              <i :class="item.icon" />
-              <span>{{ $t(item.title) }}</span>
-            </el-menu-item>
-          </el-sub-menu>
-        </template>
-        <template v-else>
-          <el-menu-item :key="menuItem.title" :index="menuItem.index">
-            <i :class="menuItem.icon" />
-            <span>{{ $t(menuItem.title) }}</span>
-          </el-menu-item>
-        </template>
-      </template>
+      <BaseSidebarItem
+        v-for="item in menuItems"
+        :key="item.index || ''"
+        :index="item.index || ''"
+        :subs="item.subs"
+        :title="item.title"
+        :icon="item.icon"
+      ></BaseSidebarItem>
     </el-menu>
   </div>
 </template>

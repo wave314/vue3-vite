@@ -41,6 +41,40 @@ const router = createRouter({
               }
             }
           ]
+        },
+        {
+          path: '/reports',
+          name: 'Reports',
+          component: () => import('../views/reports/Index.vue'),
+          meta: {
+            title: 'system.breadcrumb.report.title',
+            auth: true
+          },
+          redirect: '/report/reservation',
+          children: [
+            {
+              path: '/report/reservation',
+              name: 'Reservation',
+              redirect: '/report/reservation/day',
+              component: () => import('../views/reports/reservation/Index.vue'),
+              meta: {
+                title: 'system.breadcrumb.report.reservation.title',
+                auth: true
+              },
+              children: [
+                {
+                  path: '/report/reservation/day',
+                  name: 'ReservationDay',
+                  component: () =>
+                    import('../views/reports/reservation/day/List.vue'),
+                  meta: {
+                    title: 'system.breadcrumb.report.reservation.dayReport',
+                    auth: true
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -48,7 +82,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  debugger
   next()
 })
 export default router
