@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BaseSidebar from './BaseSidebar.vue'
 import BaseHeader from './BaseHeader.vue'
+import BasebBreadcrumb from './BasebBreadcrumb.vue'
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import BaseHeader from './BaseHeader.vue'
     <div class="main-content">
       <BaseSidebar></BaseSidebar>
       <div class="content">
+        <BasebBreadcrumb></BasebBreadcrumb>
         <router-view />
       </div>
     </div>

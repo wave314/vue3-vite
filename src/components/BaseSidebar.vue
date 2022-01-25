@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
+
+const route = useRoute()
 
 const menuItems = [
   {
@@ -9,18 +12,8 @@ const menuItems = [
     subs: [
       {
         icon: 'iconfont icon-config',
-        index: '/config/user',
-        title: '基础配置'
-      },
-      {
-        icon: 'iconfont icon-config',
-        index: '/config/resort',
-        title: '高级配置'
-      },
-      {
-        icon: 'iconfont icon-config',
-        index: '/config/client',
-        title: '系统配置'
+        index: '/config/common',
+        title: 'system.menus.config.common'
       }
     ]
   }
@@ -31,12 +24,13 @@ const store = useStore()
   <div class="sidebar">
     <el-menu
       class="sidebar-el-menu"
-      default-active="2"
+      :default-active="route.fullPath"
       :collapse="store.state.common.foldMenu"
       background-color="#324157"
       text-color="#bfcbd9"
       active-text-color="#20a0ff"
       :unique-opened="true"
+      router
     >
       <template v-for="menuItem in menuItems">
         <template v-if="menuItem.subs">

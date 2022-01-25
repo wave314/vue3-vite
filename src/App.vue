@@ -15,9 +15,7 @@ watch(useI18n().locale, () => {
 
 <template>
   <el-config-provider :locale="currentLocale">
-    <div id="app">
-      <router-view />
-    </div>
+    <router-view />
   </el-config-provider>
 </template>
 

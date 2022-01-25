@@ -20,10 +20,35 @@ const router = createRouter({
             title: 'system.breadcrumb.home',
             auth: true
           }
+        },
+        {
+          path: '/config',
+          name: 'Config',
+          component: () => import('../views/configs/Index.vue'),
+          meta: {
+            title: 'system.breadcrumb.config.title',
+            auth: true
+          },
+          redirect: '/config/common',
+          children: [
+            {
+              path: '/config/common',
+              name: 'Common',
+              component: () => import('../views/configs/common/List.vue'),
+              meta: {
+                title: 'system.breadcrumb.config.common',
+                auth: true
+              }
+            }
+          ]
         }
       ]
     }
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  debugger
+  next()
+})
 export default router

@@ -11,6 +11,7 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin-right: 2px;
 }
 
 .icon-breadcrumbs:before {
