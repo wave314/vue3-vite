@@ -50,6 +50,15 @@ module.exports = {
     'global-require': 0,
     'no-debugger': 'off',
     endOfLine: 'off',
-    'vue/multi-word-component-names': 0
+    'vue/multi-word-component-names': 0,
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: [
+          'config' // for axios request config
+        ]
+      }
+    ]
   }
 }
